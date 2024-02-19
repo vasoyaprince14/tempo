@@ -1,12 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from "dotenv";
+import userRoutes from './routes/user.route.js'
 const app=express();
 dotenv.config();
 mongoose.connect(process.env.MONGO).then(()=>{
     console.log("db connected");
 })
-
+app.use("/api/user",userRoutes);
 
 app.listen(process.env.PORT,()=>{
     console.log(
